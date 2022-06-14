@@ -1,0 +1,20 @@
+.jet-clipboard {
+	display: inline-flex;
+	align-items: center;
+	cursor: copy;
+
+	&.copied {
+		.jet-clipboard-icon {
+			font-family: dashicons;
+
+			&::before {
+				content: "\f147";
+			}
+		}
+	}
+}
+
+.jet-clipboard-icon {
+	width: auto;
+	height: auto;
+}

@@ -1,0 +1,32 @@
+{
+  "name": "jet-woo-builder-custom-add-to-cart-icon",
+  "version": "1.0.0",
+  "description": "Custom Add to Cart buttons icon for JetWooBuilder products widgets.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UraraReika/jet-woo-builder-custom-add-to-cart-icon.git"
+  },
+  "keywords": [
+    "gulpfile",
+    "plugin",
+    "scss"
+  ],
+  "author": "Alexandr Reiko",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/UraraReika/jet-woo-builder-custom-add-to-cart-icon/issues"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^4.1.0",
+    "gulp-notify": "^3.2.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5"
+  },
+  "dependencies": {}
+}
