@@ -8,7 +8,7 @@ Adds shortcode [jet_clipboard] to copy selected content into buffer.
 
 ## Instructions
 - Install and activate the plugin;
-- Go to the Elementor/Blocks editor, Dynamic Field widget and find *Phone Number Format* in the *Callback* option.
+- Go to Elementor/Blocks editor, Dynamic Field widget and find *Do Shortcodes* in *Callback* option and in *Customize field output* enter *Shortcode*.
 
 ## Screenshots
 
