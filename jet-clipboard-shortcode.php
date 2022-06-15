@@ -22,8 +22,6 @@ define( 'RAG_JCS_PATH', plugin_dir_path( RAG_JCS__FILE__ ) );
 
 class Jet_Engine_Clipboard_Shortcode {
 	public function __construct() {
-		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_styles' ] );
-		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
 		add_shortcode( 'jet_clipboard', [ $this, 'get_content' ] );
 	}
 
@@ -43,10 +41,13 @@ class Jet_Engine_Clipboard_Shortcode {
 
 	public function get_content( $atts = array() ) {
 
+		$this->enqueue_styles();
+		$this->enqueue_scripts();
+
 		$atts = shortcode_atts( array(
 			'copy_text' => '',
 			'label'     => '',
-			'icon'      => '',
+			'icon'      => '1',
 		), $atts, 'jet_clipboard' );
 
 		if (empty( $atts['copy_text'] ) && !empty( $atts['label'] ) ) {
@@ -56,6 +57,10 @@ class Jet_Engine_Clipboard_Shortcode {
 		if ( empty( $atts['copy_text'] ) ) {
 			return 0;
 		}
+
+		$svg = '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 15V2H16V15H6ZM5 16H13V18H3V5H5V16Z" fill="black"/></svg>';
+
+		$icon = apply_filters( 'jet_clipboard_icon_filter', $svg );
 
 		ob_start();
 

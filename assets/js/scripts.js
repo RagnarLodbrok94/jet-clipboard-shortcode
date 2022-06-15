@@ -1,13 +1,7 @@
 'use strict';
 
 document.addEventListener('DOMContentLoaded', function () {
-  let jetClipboards = document.querySelectorAll('[data-jet-clipboard]');
-
-  if (!jetClipboards.length) {
-    return;
-  }
-
-  const onCLick = (content) => {
+  const onCLick = (content, node) => {
     navigator.clipboard.writeText(content).then(() => {
       let timerId;
       node.classList.add('copied');
@@ -15,17 +9,27 @@ document.addEventListener('DOMContentLoaded', function () {
       timerId = setTimeout(() => {
         node.classList.remove('copied');
         clearTimeout(timerId);
-      }, 1500);
+      }, 500);
     });
-  }
+  };
 
-  jetClipboards.forEach(node => {
+  document.addEventListener('click', e => {
+    let node = e.target.closest('[data-jet-clipboard]');
+
+    if (!document.contains(node)) {
+      return;
+    }
+
+    if (!node) {
+      return;
+    }
+
     let content = node.getAttribute('data-jet-clipboard');
 
     if (!content) {
       return;
     }
 
-    node.addEventListener('click', () => onCLick(content));
+    onCLick(content, node);
   });
 });

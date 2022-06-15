@@ -1,20 +1,39 @@
 .jet-clipboard {
 	display: inline-flex;
 	align-items: center;
-	cursor: copy;
+	cursor: pointer;
 
 	&.copied {
-		.jet-clipboard-icon {
-			font-family: dashicons;
+		cursor: copy;
 
-			&::before {
-				content: "\f147";
-			}
+		.jet-clipboard-icon-copy {
+			opacity: 0;
+			visibility: hidden;
+		}
+
+		.jet-clipboard-icon-copied {
+			opacity: 1;
+			visibility: visible;
 		}
 	}
 }
 
 .jet-clipboard-icon {
-	width: auto;
-	height: auto;
+	position: relative;
+}
+
+.jet-clipboard-icon-copy {
+	display: flex;
+	transition: .15s ease;
+}
+
+.jet-clipboard-icon-copied {
+	display: flex;
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0;
+	visibility: hidden;
+	transition: .15s ease;
+	z-index: 100;
 }
