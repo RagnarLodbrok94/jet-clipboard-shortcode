@@ -3,7 +3,7 @@
  * Plugin Name: JetEngine - Copy content to clipboard
  * Plugin URI: #
  * Description: Creates a new shortcode for the Dynamic Field widget that allows you to copy content to the clipboard.
- * Version:     1.1.2
+ * Version:     1.1.3
  * Author:      Crocoblock
  * Author URI:  https://crocoblock.com/
  * License:     GPL-3.0+
@@ -22,6 +22,7 @@ define( 'RAG_JCS_PATH', plugin_dir_path( RAG_JCS__FILE__ ) );
 
 class Jet_Engine_Clipboard_Shortcode {
 	public function __construct() {
+		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
 		add_shortcode( 'jet_clipboard', [ $this, 'get_content' ] );
 	}
 
@@ -42,7 +43,6 @@ class Jet_Engine_Clipboard_Shortcode {
 	public function get_content( $atts = array() ) {
 
 		$this->enqueue_styles();
-		$this->enqueue_scripts();
 
 		$atts = shortcode_atts( array(
 			'copy_text' => '',

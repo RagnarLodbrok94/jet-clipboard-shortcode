@@ -1,24 +1,18 @@
 'use strict';
 
 document.addEventListener('DOMContentLoaded', function () {
-  const onCLick = (content, node) => {
-    navigator.clipboard.writeText(content).then(() => {
-      let timerId;
+  const onClick = async (content, node) => {
+    try {
+      await navigator.clipboard.writeText(content);
       node.classList.add('copied');
-
-      timerId = setTimeout(() => {
-        node.classList.remove('copied');
-        clearTimeout(timerId);
-      }, 500);
-    });
+      setTimeout(() => node.classList.remove('copied'), 500);
+    } catch (err) {
+      console.error("Clipboard error:", err);
+    }
   };
 
   document.addEventListener('click', e => {
     let node = e.target.closest('[data-jet-clipboard]');
-
-    if (!document.contains(node)) {
-      return;
-    }
 
     if (!node) {
       return;
@@ -30,6 +24,6 @@ document.addEventListener('DOMContentLoaded', function () {
       return;
     }
 
-    onCLick(content, node);
+    onClick(content, node);
   });
 });
